@@ -99,7 +99,7 @@ class Admin:
         print(f"{'Sr.':<4} {'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
         if len(Admin.medicine) != 0:
             for idx, med in enumerate(Admin.medicine, 1):
-                print(f"{idx:<4} {med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                print(f"{idx:<4} {med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
         else:
             print("\nNo medicines available.")
 
@@ -112,7 +112,7 @@ class Admin:
             
             for med in Admin.medicine:
                 print(
-                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
 
         else:
             print("\nNo medicines available.")
@@ -138,7 +138,7 @@ class Admin:
             
             for med in Admin.medicine:
                 print(
-                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
 
         else:
             print("\nNo medicines available.")
@@ -155,7 +155,7 @@ class Admin:
                 print(
         f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
                 print(
-                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} {medicine['price']:<10} {medicine['quantity']:<10}")
+                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} ₹{medicine['price']:<10} {medicine['quantity']:<10}")
                 try:
                     price = float(input("Enter new price : "))
                 except ValueError:
@@ -167,7 +167,7 @@ class Admin:
                 print(
         f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
                 print(
-                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} {medicine['price']:<10} {medicine['quantity']:<10}")
+                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} ₹{medicine['price']:<10} {medicine['quantity']:<10}")
                 f=False
                 break
             
@@ -183,7 +183,7 @@ class Admin:
             
             for med in Admin.medicine:
                 print(
-                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                    f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
 
         else:
             print("\nNo medicines available.")
@@ -201,7 +201,7 @@ class Admin:
                 print(
         f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
                 print(
-                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} {medicine['price']:<10} {medicine['quantity']:<10}")
+                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} ₹{medicine['price']:<10} {medicine['quantity']:<10}")
                 quantity = int(input("Enter new quantity : "))
                 medicine["quantity"] += quantity
                 print("\n Updated quantity")
@@ -209,7 +209,7 @@ class Admin:
                 print(
         f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
                 print(
-                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} {medicine['price']:<10} {medicine['quantity']:<10}")
+                    f"{medicine['id']:<5} {medicine['name']:<20} {medicine['category']:<20} ₹{medicine['price']:<10} {medicine['quantity']:<10}")
                 break
         if f:
 
@@ -253,7 +253,7 @@ class Admin:
                 
                 sold += med["sales"]
                 revenue += med["price"] * med["sales"]
-                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['sales']:<10} {med['quantity']:<10} {med['price']:<10} {(med['price'] * med['sales']):<10}")
+                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['sales']:<10} {med['quantity']:<10} ₹{med['price']:<10} {(med['price'] * med['sales']):<10}")
         print("-" * 95)
         print(f"Total Items Sold: {sold}")
         print(f"Total Revenue: ₹{revenue}")
@@ -341,7 +341,7 @@ class Customer(Admin):
             for idx, item in enumerate(purchase['items'].values(), 1):
                 subtotal = item['price'] * item['quantity']
                 print(f"{idx:<4} {item['id']:<5} {item['name']:<20} {item['category']:<20} "
-                      f"{item['price']:>7} {item['quantity']:>8} {subtotal:>10}")
+                      f"₹{item['price']:>7} {item['quantity']:>8} ₹{subtotal:>10}")
             print("-" * 85)
             print("\n")
 
@@ -352,7 +352,7 @@ class Customer(Admin):
 
         
         for med in Admin.medicine:
-            print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+            print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
 
         cart = []  
         total_price = 0  
@@ -390,7 +390,7 @@ class Customer(Admin):
 
                         if quantity<=temp_stock[med_id] and quantity>0:
                             total_price += med["price"] * quantity
-                            print(f"Total price so far: {total_price}")
+                            print(f"Total price so far: ₹{total_price}")
 
                           
                             cart.append({
@@ -411,7 +411,7 @@ class Customer(Admin):
                             for med in cart:
 
                                 
-                                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
                         else:
                             print("Invalid quantity Or Not enough stock.")
                     else:
@@ -441,10 +441,10 @@ class Customer(Admin):
         print(f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
 
         for item in consolidated_cart.values():
-            print(f"{item['id']:<5} {item['name']:<20} {item['category']:<20} {item['price']:<10} {item['quantity']:<10}")
+            print(f"{item['id']:<5} {item['name']:<20} {item['category']:<20} ₹{item['price']:<10} {item['quantity']:<10}")
 
         print("-" * 40)
-        print(f"Total price: {total_price}")
+        print(f"Total price: ₹{total_price}")
         print("-" * 40)
 
         confirm = input("Press 1 to confirm buy: ").strip()
@@ -497,11 +497,11 @@ class Customer(Admin):
                 for idx, item in enumerate(consolidated_cart.values(), 1):
                     subtotal = item['price'] * item['quantity']
                     bill_file.write(f"{idx:<4} {item['id']:<5} {item['name']:<20} {item['category']:<20} "
-                                    f"{item['price']:>7} {item['quantity']:>8} {subtotal:>10}\n")
+                                    f"₹{item['price']:>7} {item['quantity']:>8} ₹{subtotal:>10}\n")
 
                 bill_file.write(f"{'-'*90}\n")
-                bill_file.write(f"{'Total Amount:':<10} {total_price:>0}\n")
-                bill_file.write(f"{'Amount Paid:':<10} {r:>0}\n")
+                bill_file.write(f"{'Total Amount:':<10} ₹{total_price:>0}\n")
+                bill_file.write(f"{'Amount Paid:':<10} ₹{r:>0}\n")
                 bill_file.write(f"{'-'*90}\n")
                 bill_file.write("\n")
                 bill_file.write("Thank you for shopping with us!\n")
@@ -530,14 +530,14 @@ class Customer(Admin):
         for med in Admin.medicine:
             if med['name'].lower().startswith(name.lower()):
                
-                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10}")
+                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10}")
     def searchcat(self,name):
         print("\n")
         print(f"{'P_ID':<5} {'Name':<20} {'Category':<20} {'Price':<10} {'Quantity':<10}")
         for med in Admin.medicine:
             if med['category'].lower().startswith(name.lower()):
                
-                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} {med['price']:<10} {med['quantity']:<10} ")
+                print(f"{med['id']:<5} {med['name']:<20} {med['category']:<20} ₹{med['price']:<10} {med['quantity']:<10} ")
     @staticmethod
     def check_mobile(mobile):
         """Check if mobile number already exists"""
